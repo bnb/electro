@@ -1,0 +1,24 @@
+{
+	"name": "electro",
+	"version": "0.0.1",
+	"description": "Retro generation tool for Electron",
+	"main": "generate.js",
+	"scripts": {
+		"biome:format": "npx @biomejs/biome format --write .",
+		"biome:lint": "npx @biomejs/biome lint .",
+		"biome:lint:write": "npx @biomejs/biome lint --write .",
+		"updates:check": "npx npm-check-updates",
+		"updates:update": "npx npm-check-updates -u",
+		"generate": "node generate.js"
+	},
+	"keywords": [],
+	"author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
+	"license": "MIT",
+	"dependencies": {
+		"@retrogen/generate": "^0.0.2",
+		"luxon": "^3.5.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.8.3"
+	}
+}
