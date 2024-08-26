@@ -1,4 +1,4 @@
-name: Generate Electron Retro
+name: "Generate: Electron Userland Retro"
 on:
   schedule:
     # Run once a week at 00:05 AM UTC on Sunday.
