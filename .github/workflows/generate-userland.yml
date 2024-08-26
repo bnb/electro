@@ -1,0 +1,32 @@
+name: Generate Electron Retro
+on:
+  schedule:
+    # Run once a week at 00:05 AM UTC on Sunday.
+    - cron: 0 0 * * 0
+  # Run on demand via the GitHub UI
+  workflow_dispatch:
+
+jobs:
+  generate_retro:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run cloner
+        uses: actions/checkout@v3
+      - name: run install
+        run: npm install
+      - name: npm run generate:userland
+        run: npm run generate:userland # Run the generation tool
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: run create/update pull request
+        uses: gr2m/create-or-update-pull-request-action@v1 # Create a PR or update the Action's existing PR
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          body: >
+            Here's a new weekly retro, automatically generated with
+            GitHub Actions and `@retrogen/generate`.
+          branch: actions/generate-userland  # Custom branch *just* for this Action.
+          commit-message: 'doc: generate weekly retro'
+          title: 'doc: generate weekly retro'
+          assignees: bnb # change to whoever you want to be assigned to this PR

@@ -14,14 +14,6 @@ jobs:
         uses: actions/checkout@v3
       - name: run install
         run: npm install
-      - name: npm run generate:electron
-        run: npm run generate:electron # Run the generation tool
-        env: 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: npm run generate:userland
-        run: npm run generate:userland # Run the generation tool
-        env: 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: npm run generate:continuousauth
         run: npm run generate:continuousauth # Run the generation tool
         env: 
@@ -34,7 +26,7 @@ jobs:
           body: >
             Here's a new weekly retro, automatically generated with
             GitHub Actions and `@retrogen/generate`.
-          branch: actions/retrogen  # Custom branch *just* for this Action.
+          branch: actions/generate-continuousauth  # Custom branch *just* for this Action.
           commit-message: 'doc: generate weekly retro'
           title: 'doc: generate weekly retro'
           assignees: bnb # change to whoever you want to be assigned to this PR
