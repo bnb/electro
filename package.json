@@ -9,9 +9,11 @@
 		"biome:lint:write": "npx @biomejs/biome lint --write .",
 		"updates:check": "npx npm-check-updates",
 		"updates:update": "npx npm-check-updates -u",
-		"generate": "node generate.js"
+		"generate": "npm run generate:electron && npm run generate:userland && npm run generate:continuousauth",
+		"generate:electron": "node generators/electron.js",
+		"generate:userland": "node generators/electron-userland.js",
+		"generate:continuousauth": "node generators/continuousauth.js"
 	},
-	"keywords": [],
 	"author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
 	"license": "MIT",
 	"dependencies": {
